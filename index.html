@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Arquivos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-orange-100 text-gray-800">
+    <header class="text-center p-4 bg-orange-500 text-white font-bold">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white">Thawan Santos</h1>
+            <nav>
+                <!-- Botão do menu hambúrguer -->
+                <button id="menu-btn" class="text-2xl text-white focus:outline-none md:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Overlay para o fundo preto transparente -->
+                <div id="menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                <!-- Menu -->
+                <ul id="menu" class="hidden fixed top-0 right-0 w-2/3 h-full bg-gray-900 text-white flex flex-col items-center justify-center space-y-6 z-50 md:relative md:w-auto md:flex md:flex-row md:bg-transparent md:space-y-0 md:space-x-4">
+                    <li><a href="https://thawansantos2.github.io/portfolio/" class="hover:underline text-xl md:text-base">Portfólio</a></li>
+                    <li><a href="#contato" class="hover:underline text-xl md:text-base">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+   
+    <div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+        <h1 class="text-2xl font-bold text-orange-500 text-center">Gerador de Listas</h1>
+        <input type="text" id="titulo" class="w-full p-2 border rounded mt-4" placeholder="Título (Opcional)">
+        <div class="flex gap-2 mt-2">
+            <input type="text" id="item" class="flex-1 p-2 border rounded" placeholder="Digite um item">
+            <button onclick="adicionarItem()" class="bg-orange-500 text-white px-4 py-2 rounded">Adicionar</button>
+        </div>
+        <ul id="lista" class="mt-4 space-y-2"></ul>
+        <div class="mt-4">
+            <label class="block">Formato:</label>
+            <select id="formato" class="w-full p-2 border rounded">
+                <option value="excel">Excel</option>
+                <option value="pdf">Documento PDF</option>
+            </select>
+        </div>
+        <div class="mt-4">
+            <label class="block">Configurações:</label>
+            <input type="checkbox" id="enumera" class="mr-2"> Enumerar itens <br>
+            <input type="checkbox" id="destacar" onchange="toggleEstrela()" class="mr-2"> Destacar itens importantes
+        </div>
+        <input type="text" id="nomeArquivo" class="w-full p-2 border rounded mt-4" placeholder="Nome do arquivo (Opcional)">
+        <button onclick="gerarArquivo()" class="mt-4 w-full bg-green-500 text-white p-2 rounded">Gerar</button>
+    </div>
+   
+    <footer class="text-center p-4 bg-orange-500 text-white font-bold mt-10 w-full">
+        <section id="contato">
+            <div class="container mx-auto text-center">
+            <p>&copy; 2025 Thawan Bomfim dos Santos. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="https://github.com/ThawanSantos2" class="text-2xl hover:text-blue-500"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/thawansantos2" class="text-2xl hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/thawan_santos2/" class="text-2xl hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+5579998466084" class="text-2xl hover:text-blue-500"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
